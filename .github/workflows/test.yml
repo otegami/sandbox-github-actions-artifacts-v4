@@ -9,9 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Install zip
+        run: sudo apt install zip
+      - name: Create zip
+        run: zip test.zip ./.github/workflows/test.yml
       - name: Upload file
         uses: actions/upload-artifact@v4
         with:
           name: workflow-file
-          path: "./.github/workflows/test.yml"
+          path: "./test.zip"
           retention-days: 1

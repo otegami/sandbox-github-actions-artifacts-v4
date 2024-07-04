@@ -1,0 +1,17 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Upload file
+        uses: actions/upload-artifact@v4
+        with:
+          name: workflow-file
+          path: "./.github/workflows/test.yml"
+          retention-days: 1

@@ -8,16 +8,16 @@ access_token = ENV['GITHUB_ACCESS_TOKEN']
 
 # succeeded example
 headers = {
- "Authorization" => "token #{access_token}",
- redirect: false
+  "Authorization" => "token #{access_token}",
+  redirect: false
 }
 
 loop do
- begin
-   URI.open(uri, headers)
-   break
- rescue OpenURI::HTTPRedirect => redirect
-   headers.delete("Authorization")
-   pp uri = redirect.uri
+  begin
+    URI.open(uri, headers)
+    break
+  rescue OpenURI::HTTPRedirect => redirect
+    headers.delete("Authorization")
+    pp uri = redirect.uri
  end
 end
